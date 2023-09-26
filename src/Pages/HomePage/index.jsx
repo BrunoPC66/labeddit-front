@@ -1,7 +1,14 @@
-import { getLogin, newUser } from "../../Requisitions/UsersReq"
+import { useContext } from "react"
+import { GlobalContext } from "../../Contexts/GlobalContext"
+import { useNavigate } from "react-router-dom"
 
 export const HomePage = () => {
-    console.log(getLogin('fulano@email.com', 'fulano123'));
+    const context = useContext(GlobalContext)
+    const navigate = useNavigate()
+
+    const {
+
+    } = context
 
     return (
         <>

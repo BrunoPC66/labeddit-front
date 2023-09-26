@@ -1,11 +1,7 @@
 import axios from "axios";
 import { BASE_URL } from "../../Constants";
 
-export const newUser = async (
-    name,
-    email,
-    password
-) => {
+export const newUser = async (name, email, password) => {
 
     const body = {
         name,
@@ -14,9 +10,10 @@ export const newUser = async (
     }
 
     try {
-        const result = await axios.post(`${BASE_URL}/users`, body)
-
-        return result.data
+        const res = await axios.post(`${BASE_URL}/users/signup`, body/*, headers*/)
+        const result = res.data
+        
+        return result
     } catch (error) {
         console.error(`newUser error: ${err.response}`);
     }
@@ -29,7 +26,8 @@ export const getLogin = async (email, password) => {
     }
 
     try {
-        const result = await axios.get(`${BASE_URL}/users/login`, body)
+        const res = await axios.get(`${BASE_URL}/users/login`, body)
+        const result = res.data
 
         return result.data
     } catch (err) {
@@ -37,7 +35,7 @@ export const getLogin = async (email, password) => {
     }
 }
 
-export const fetchUsers = async (userName, token) => {
+export const fetchUsers = async (token, userName) => {
     const config = {
         headers: {
             Authorization: token
@@ -50,11 +48,11 @@ export const fetchUsers = async (userName, token) => {
     }
 
     try {
-        const response = await axios.get(`${BASE_URL}/users`, config)
+        const res = await axios.get(`${BASE_URL}/users`, config)
 
-        const result = response
-        
-        return result.data
+        const result = res.data
+
+        return result
     } catch (err) {
         console.error(`fetchUsers error: ${err.response}`);
     }
@@ -95,7 +93,8 @@ export const editUser = async (
     }
 
     try {
-        const result = await axios.put(`${BASE_URL}/users/:${id}`, body, config)
+        const res = await axios.put(`${BASE_URL}/users/:${id}`, body, config)
+        const result = res.data
 
         return result.data
     } catch (err) {
@@ -116,9 +115,10 @@ export const deleteAccount = async (password, id, token) => {
     }
 
     try {
-        const result = await axios.delete(`${BASE_URL}/users/:${id}`, body, config)
-
-        return result.data
+        const res = await axios.delete(`${BASE_URL}/users/:${id}`, body, config)
+        const result = res.data
+        
+        return result
     } catch (err) {
         console.error(`deleteAccount error: ${err.response}`);
     }

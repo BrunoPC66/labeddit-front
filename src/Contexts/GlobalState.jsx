@@ -1,7 +1,12 @@
 import { useState } from "react"
 import { GlobalContext } from "./GlobalContext"
 import { getLogin, newUser } from "../Requisitions/UsersReq"
-import { goToHomePage } from "../Router/Coordinator"
+import {
+    goToHomePage,
+    goToLoginPage,
+    goToSignupPage,
+    goToComentsPage
+} from "../Router/Coordinator"
 
 export const GlobalState = (props) => {
     const [userName, setUserName] = useState('')
@@ -48,8 +53,6 @@ export const GlobalState = (props) => {
         handleName,
         handleEmail,
         handlePassword,
-        
-
     }
 
     return (
