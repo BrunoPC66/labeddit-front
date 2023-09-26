@@ -16,7 +16,7 @@ export const newUser = async (
     try {
         const result = await axios.post(`${BASE_URL}/users`, body)
 
-        return result
+        return result.data
     } catch (error) {
         console.error(`newUser error: ${err.response}`);
     }
@@ -31,7 +31,7 @@ export const getLogin = async (email, password) => {
     try {
         const result = await axios.get(`${BASE_URL}/users/login`, body)
 
-        return result
+        return result.data
     } catch (err) {
         console.error(`fetchUsers error: ${err.response}`);
     }
@@ -54,7 +54,7 @@ export const fetchUsers = async (userName, token) => {
 
         const result = response
         
-        return result
+        return result.data
     } catch (err) {
         console.error(`fetchUsers error: ${err.response}`);
     }
@@ -97,7 +97,7 @@ export const editUser = async (
     try {
         const result = await axios.put(`${BASE_URL}/users/:${id}`, body, config)
 
-        return result
+        return result.data
     } catch (err) {
         console.error(`editUser error: ${err.response}`);
     }
@@ -118,7 +118,7 @@ export const deleteAccount = async (password, id, token) => {
     try {
         const result = await axios.delete(`${BASE_URL}/users/:${id}`, body, config)
 
-        return result
+        return result.data
     } catch (err) {
         console.error(`deleteAccount error: ${err.response}`);
     }
