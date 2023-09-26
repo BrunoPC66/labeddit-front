@@ -15,18 +15,24 @@ export const LoginPage = () => {
     return (
         <>
             <header></header>
-            <h1>LoginPage</h1>
-            <section>
-                <img />
-                <h1>Labeddit</h1>
-                <h3>Uma rede social da comunidade tech</h3>
-            </section>
-            <form>
-                <input type="email" id="email" name="email" placeholder="Email" onChange={handleEmail} />
-                <input type="password" id="password" name="password" placeholder="Senha" autoComplete="on" onChange={handlePassword} />
-                <button type="submit" onClick={() => login(navigate)}>Entrar</button>
-            </form>
-            <button>Criar uma conta</button>
+            <body>
+                <h1>LoginPage</h1>
+                <section>
+                    <img />
+                    <h1>Labeddit</h1>
+                    <h3>Uma rede social da comunidade tech</h3>
+                </section>
+                <form>
+                    <input type="email" id="email" name="email" placeholder="Email"
+                        autoComplete="on" onChange={(e) => handleEmail(e)} />
+                    <input type="password" id="password" name="password" placeholder="Senha" autoComplete="on" onChange={(e) => handlePassword(e)} />
+                    <button type="submit" onClick={() => login(navigate)}>Entrar</button>
+                </form>
+                <button>Criar uma conta</button>
+            </body>
+            <footer>
+                
+            </footer>
         </>
     )
 }
