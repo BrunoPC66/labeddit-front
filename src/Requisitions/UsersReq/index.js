@@ -9,19 +9,13 @@ export const newUser = async (name, email, password) => {
         password
     }
 
-    // const headers = {
-    //     'Content-Type': 'application/json',
-    //     'Accept': '*/*',
-    //     'Accept-Encoding': 'gzip, deflate, br'
-    //   };
-
     try {
         const res = await axios.post(`${BASE_URL}/users/signup`, body/*, headers*/)
         const result = res.data
-
+        
         return result
-    } catch (err) {
-        console.error(`newUser error: ${err}`);
+    } catch (error) {
+        console.error(`newUser error: ${err.response}`);
     }
 }
 
@@ -35,7 +29,7 @@ export const getLogin = async (email, password) => {
         const res = await axios.get(`${BASE_URL}/users/login`, body)
         const result = res.data
 
-        return result
+        return result.data
     } catch (err) {
         console.error(`fetchUsers error: ${err.response}`);
     }
@@ -102,7 +96,7 @@ export const editUser = async (
         const res = await axios.put(`${BASE_URL}/users/:${id}`, body, config)
         const result = res.data
 
-        return result
+        return result.data
     } catch (err) {
         console.error(`editUser error: ${err.response}`);
     }

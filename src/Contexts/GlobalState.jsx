@@ -8,52 +8,51 @@ import {
     goToComentsPage
 } from "../Router/Coordinator"
 
-
 export const GlobalState = (props) => {
-    const [post, setPost] = useState("")
-    const [token, setToken] = useState("")
-    const [name, setName] = useState("")
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
+    const [userName, setUserName] = useState('')
+    const [userEmail, setUserEmail] = useState('')
+    const [userPassword, setUserPassword] = useState('')
+    const [token, setToken] = useState('')
+    const [postContent, setPostContent] = useState('')
+    const [commentContent, setCommentContent] = useState('')
 
     const handleName = (e) => {
-        setName(e.target.value)
+        setUserName(e.target.value)
     }
 
     const handleEmail = (e) => {
-        setEmail(e.target.value)
+        setUserEmail(e.target.value)
     }
 
     const handlePassword = (e) => {
-        setPassword(e.target.value)
+        setUserPassword(e.target.value)
     }
-    
+
     const login = (navigate) => {
-        getLogin(email, password)
-        .then(res => {
-            setToken(res.token)
-            goToHomePage(navigate)
-        })
-        .catch(err => console.error(`Erro no login: ${err}`))
+        getLogin(userEmail, userPassword)
+            .then(user => {
+                setToken(user.token)
+                goToHomePage(navigate)
+            })
+            .catch(err => `Erro no login: ${err}`)
     }
-    
+
     const signup = (navigate) => {
-        newUser(name, email, password)
-        .then(res => {
-            setToken(res.token)
-            login()
-            goToHomePage(navigate)
-        })
-        .catch(err => console.error(`Erro no cadastro: ${err}`))
+        newUser(userName, userEmail, userPassword)
+            .then(user => {
+                setToken(user.token)
+                login(navigate)
+                return user.message
+            })
+            .catch(err => `Erro no cadastro: ${err}`)
     }
 
     const context = {
+        login,
+        signup,
         handleName,
         handleEmail,
         handlePassword,
-        signup,
-        login,
-
     }
 
     return (
