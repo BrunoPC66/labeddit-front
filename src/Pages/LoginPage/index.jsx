@@ -14,9 +14,10 @@ export const LoginPage = () => {
 
     return (
         <>
-            <header></header>
+            <h1>LoginPage</h1>
+            <header>
+            </header>
             <body>
-                <h1>LoginPage</h1>
                 <section>
                     <img />
                     <h1>Labeddit</h1>
@@ -31,7 +32,7 @@ export const LoginPage = () => {
                 <button>Criar uma conta</button>
             </body>
             <footer>
-                
+
             </footer>
         </>
     )

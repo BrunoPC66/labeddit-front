@@ -10,6 +10,6 @@ export const goToSignupPage = (navigate) => {
     navigate(`/signup`)
 };
 
-export const goToComentsPage = (navigate) => {
-    navigate(`/coments`)
+export const goToCommentsPage = (navigate) => {
+    navigate(`/comments`)
 };

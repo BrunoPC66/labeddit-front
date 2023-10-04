@@ -13,7 +13,8 @@ export const newPost = async (content, token) => {
     }
 
     try {
-        const result = axios.post(`${BASE_URL}/posts`, body, config)
+        const res = axios.post(`${BASE_URL}/posts`, body, config)
+        const result = res.data
 
         return result
     } catch (error) {
@@ -37,7 +38,8 @@ export const fetchPost = async (creatorName, token) => {
     try {
         const promises = await axios.get(`${BASE_URL}/posts`, config)
 
-        const result = Promise.all(promises.map(Post => Post))
+        const res = Promise.all(promises.map(Post => Post))
+        const result = res.data
 
         return result
     }
@@ -61,7 +63,8 @@ export const editPost = async (postId, newContent, token) => {
     }
 
     try {
-        const result = await axios.put(`${BASE_URL}/posts/:${postId}`, body, config)
+        const res = await axios.put(`${BASE_URL}/posts/:${postId}`, body, config)
+        const result = res.data
 
         return result
     } catch (err) {
@@ -77,7 +80,8 @@ export const deletePost = async (postId, token) => {
     }
 
     try {
-        const result = await axios.delete(`${BASE_URL}/posts/:${postId}`, config)
+        const res = await axios.delete(`${BASE_URL}/posts/:${postId}`, config)
+        const result = res.data
 
         return result
     } catch (err) {
@@ -97,7 +101,8 @@ export const likes = async (like, postId, token) => {
     }
 
     try {
-        const result = await axios.delete(`${BASE_URL}/posts/:${postId}/like`, body, config)
+        const res = await axios.delete(`${BASE_URL}/posts/:${postId}/like`, body, config)
+        const result = res.data
 
         return result
     } catch (err) {
