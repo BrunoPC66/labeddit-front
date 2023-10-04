@@ -15,8 +15,8 @@ export const SignupPage = () => {
 
     return (
         <>
+            <h1>SignupPage</h1>
             <header>
-                SignupPage
             </header>
             <body>
                 <section>
